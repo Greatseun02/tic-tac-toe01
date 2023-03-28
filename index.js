@@ -4,6 +4,7 @@
 
 //first set a eventlisteners on all the rows.
 let gameFlow = 1
+let blockTaken = 0
 let player1_score = 0
 let player2_score = 0
 let table1Clicked = false
@@ -73,36 +74,12 @@ table9.addEventListener("click", function() {
     table9Clicked = true
 })
 
-reset.addEventListener("click", function(){
-    table1Clicked = false
-    table1.children[0].innerHTML = ""
-    table2Clicked = false
-    table2.children[0].innerHTML = ""
-    table3Clicked = false
-    table3.children[0].innerHTML = ""
-    table4Clicked = false
-    table4.children[0].innerHTML = ""
-    table5Clicked = false
-    table5.children[0].innerHTML = ""
-    table6Clicked = false
-    table6.children[0].innerHTML = ""
-    table7Clicked = false
-    table7.children[0].innerHTML = ""
-    table8Clicked = false
-    table8.children[0].innerHTML = ""
-    table9Clicked = false
-    table9.children[0].innerHTML = ""
-    document.getElementById("table").style.display="table"
-    reset.style.display="none"
-    document.getElementById("game_info1").style.display="table"
-    document.getElementById("game_info2").style.display="none"
-    document.getElementById("X_score_text").innerHTML = player1_score
-    document.getElementById("O_score_text").innerHTML = player2_score
-})
+reset.addEventListener("click", reset_entire_table)
 
 function ifClicked(tableClicked, theTable){
     if(!tableClicked){
         XorO(theTable)
+        blockTaken++
         gameFlow++
         checkwinner()
     }
@@ -116,6 +93,13 @@ function checkwinner(){
     else if((table3.children[0].innerHTML == "O" & table5.children[0].innerHTML == "O" & table7.children[0].innerHTML== "O")||(table1.children[0].innerHTML == "O" & table5.children[0].innerHTML == "O" & table9.children[0].innerHTML== "O")||(table1.children[0].innerHTML == "O" & table4.children[0].innerHTML == "O" & table7.children[0].innerHTML== "O")||(table2.children[0].innerHTML == "O" & table5.children[0].innerHTML == "O" & table8.children[0].innerHTML== "O")||(table3.children[0].innerHTML == "O" & table6.children[0].innerHTML == "O" & table9.children[0].innerHTML== "O")||(table1.children[0].innerHTML == "O" & table2.children[0].innerHTML == "O" & table3.children[0].innerHTML== "O") || (table4.children[0].innerHTML == "O" & table5.children[0].innerHTML == "O" & table6.children[0].innerHTML== "O") || (table7.children[0].innerHTML == "O" & table8.children[0].innerHTML == "O" & table9.children[0].innerHTML== "O")){
         player2_score++
         displayScore("O_won")
+    }
+    else if(blockTaken == 9){
+        document.getElementById("game_info1").style.display = "none"
+        document.getElementById("game_info2").style.display = "block"
+        document.getElementById("game_info2").innerHTML = "Draw"
+        document.getElementById("table").style.display="none"
+        reset.style.display="block"
     }
 }
 
@@ -142,6 +126,33 @@ function displayScore(who_won){
         document.getElementById("table").style.display="none"
         reset.style.display="block"
     }
+}
+function reset_entire_table(){
+    table1Clicked = false
+    table1.children[0].innerHTML = ""
+    table2Clicked = false
+    table2.children[0].innerHTML = ""
+    table3Clicked = false
+    table3.children[0].innerHTML = ""
+    table4Clicked = false
+    table4.children[0].innerHTML = ""
+    table5Clicked = false
+    table5.children[0].innerHTML = ""
+    table6Clicked = false
+    table6.children[0].innerHTML = ""
+    table7Clicked = false
+    table7.children[0].innerHTML = ""
+    table8Clicked = false
+    table8.children[0].innerHTML = ""
+    table9Clicked = false
+    table9.children[0].innerHTML = ""
+    document.getElementById("table").style.display="table"
+    reset.style.display="none"
+    document.getElementById("game_info1").style.display="table"
+    document.getElementById("game_info2").style.display="none"
+    document.getElementById("X_score_text").innerHTML = player1_score
+    document.getElementById("O_score_text").innerHTML = player2_score
+    blockTaken = 0
 }
 //each time a row is clicked it should not be clicked again. 
 //dynamic flow of X and O, we always start with X, so if X is clicked O should be next
