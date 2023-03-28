@@ -1,0 +1,19 @@
+body{
+    padding-left: 400px;
+    padding-top: 100px;
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 35%;
+    height: 311px;
+  }
+  
+td {
+    text-align: center;
+    padding: 8px;
+}
+
+.reset{
+    display:none;
+}

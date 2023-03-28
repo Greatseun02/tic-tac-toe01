@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Tic Tac Toe</title>
+</head>
+<body>
+    <h1 >Tic Tac Toe</h1>
+    <p>Tap on area you want to play to</p>
+    <h4 id="game_info1">X <span id="X_score_text"> 0</span> - <span id="O_score_text">0</span> O</h4>
+    <h4 id="game_info2"></h4>
+    <table id="table">
+        <tbody>
+            <tr style="border-bottom: 2px solid #dddddd;">
+                <td id="row1_col1" style="border-right: 2px solid #dddddd;"><p></p></td>
+                <td id="row1_col2"><p></p></td>
+                <td id="row1_col3" style="border-left: 2px solid #dddddd;"><p></p></td>
+            </tr>
+            <tr>
+                <td id="row2_col1" style="border-right: 2px solid #dddddd;"><p></p></td>
+                <td id="row2_col2"><p></p></td>
+                <td id="row2_col3" style="border-left: 2px solid #dddddd;"><p></p></td>
+            </tr>
+            <tr style="border-top: 2px solid #dddddd;">
+                <td id="row3_col1" style="border-right: 2px solid #dddddd;"><p></p></td>
+                <td id="row3_col2"><p></p></td>
+                <td id="row3_col3" style="border-left: 2px solid #dddddd;"><p></p></td>
+            </tr>
+        </tbody>
+        
+    </table>
+
+    <button class="reset" id="reset">Play again</button>
+<script src="index.js"></script>
+</body>
+</html>
