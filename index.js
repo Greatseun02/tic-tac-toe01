@@ -94,65 +94,80 @@ function checkwinner(){
         player2_score++
         displayScore("O_won")
     }
-    else if(blockTaken == 9){
-        document.getElementById("game_info1").style.display = "none"
-        document.getElementById("game_info2").style.display = "block"
-        document.getElementById("game_info2").innerHTML = "Draw"
-        document.getElementById("table").style.display="none"
-        reset.style.display="block"
-    }
+    else{
+        if(blockTaken == 9){
+            displayScore("Draw")
+        }
+    } 
 }
 
 function XorO(self){
     if(gameFlow % 2 != 0){
         self.children[0].innerHTML = "X"
+        document.getElementById("game-flow").innerHTML = "O to play"
     }else{
         self.children[0].innerHTML = "O"
+        document.getElementById("game-flow").innerHTML = "X to play"
     }
 }
 
 function displayScore(who_won){
     if(who_won=="X_won"){
-        document.getElementById("game_info1").style.display = "none"
+        document.getElementById("game_info1").style.display = "block"
         document.getElementById("game_info2").style.display = "block"
         document.getElementById("game_info2").innerHTML = "X won the game"
         document.getElementById("table").style.display="none"
         reset.style.display="block"
+        document.getElementById("X_score_text").innerHTML = player1_score
+        document.getElementById("game-flow").style.display="none"
+        document.getElementById("instructions").style.display = "none"
     }
     else if(who_won=="O_won"){
-        document.getElementById("game_info1").style.display = "none"
+        document.getElementById("game_info1").style.display = "block"
         document.getElementById("game_info2").style.display = "block"
         document.getElementById("game_info2").innerHTML = "O won the game"
         document.getElementById("table").style.display="none"
         reset.style.display="block"
+        document.getElementById("O_score_text").innerHTML = player2_score
+        document.getElementById("game-flow").style.display="none"
+        document.getElementById("instructions").style.display = "none"
+    }
+    else if(who_won="Draw"){
+        document.getElementById("game_info1").style.display = "block"
+        document.getElementById("game_info2").style.display = "block"
+        document.getElementById("game_info2").innerHTML = "Draw"
+        document.getElementById("table").style.display="none"
+        reset.style.display="block"
+        document.getElementById("game-flow").style.display="none"
+        document.getElementById("instructions").style.display = "none"
     }
 }
 function reset_entire_table(){
     table1Clicked = false
-    table1.children[0].innerHTML = ""
+    table1.children[0].innerHTML = " "
     table2Clicked = false
-    table2.children[0].innerHTML = ""
+    table2.children[0].innerHTML = " "
     table3Clicked = false
-    table3.children[0].innerHTML = ""
+    table3.children[0].innerHTML = " "
     table4Clicked = false
-    table4.children[0].innerHTML = ""
+    table4.children[0].innerHTML = " "
     table5Clicked = false
-    table5.children[0].innerHTML = ""
+    table5.children[0].innerHTML = " "
     table6Clicked = false
-    table6.children[0].innerHTML = ""
+    table6.children[0].innerHTML = " "
     table7Clicked = false
-    table7.children[0].innerHTML = ""
+    table7.children[0].innerHTML = " "
     table8Clicked = false
-    table8.children[0].innerHTML = ""
+    table8.children[0].innerHTML = " "
     table9Clicked = false
-    table9.children[0].innerHTML = ""
+    table9.children[0].innerHTML = " "
     document.getElementById("table").style.display="table"
     reset.style.display="none"
-    document.getElementById("game_info1").style.display="table"
+    document.getElementById("game_info1").style.display="none"
     document.getElementById("game_info2").style.display="none"
-    document.getElementById("X_score_text").innerHTML = player1_score
-    document.getElementById("O_score_text").innerHTML = player2_score
     blockTaken = 0
+    document.getElementById("game-flow").style.display="block"
+    document.getElementByClassName("instructions").style.display = "none"
 }
 //each time a row is clicked it should not be clicked again. 
 //dynamic flow of X and O, we always start with X, so if X is clicked O should be next
